@@ -10,6 +10,12 @@ function App() {
   const cars = state.cars;
   const filterYears = state.filterYears;
   const selectedYear = state.selectedYear;
+  const [newCar, setNewCar] = useState<Car>({
+    id: Date.now().toString(),
+    name: "",
+    year: null,
+    url: "https://i.pravatar.cc",
+  });
 
   const handleSelectedYear = (year: number) => {
     dispatch({ type: "SET_FILTER_YEAR", payload: year });
@@ -21,6 +27,16 @@ function App() {
     filteredCars = cars.filter((car) => car.year === selectedYear);
   }
 
+  const handleNewCarSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    dispatch({type: "ADD_CAR", payload: newCar})
+    setNewCar({
+      id: Date.now().toString(),
+      name: "",
+      year: null,
+      url: "https://i.pravatar.cc",
+    })
+  };
   return (
     <div className="Cars">
       <div className="selcted">
@@ -30,6 +46,16 @@ function App() {
           </div>
         ))}
       </div>
+
+      <form onSubmit={handleNewCarSubmit}>
+        <input
+          type="text"
+          name="name"
+          value={newCar.name}
+          onChange={(e) => setNewCar({ ...newCar, name: e.target.value })}
+        />
+        <button type="submit">+</button>
+      </form>
 
       <div className="cars">
         {filteredCars.map((car) => (

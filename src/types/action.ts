@@ -1,7 +1,9 @@
+import { Car } from "./car";
+
 // individual actions
 export type ActionSetAddCar={
-  type: "SET_ADD_CAR";
-  payload: string;
+  type: "ADD_CAR";
+  payload: Car
 }
 export type ActionSetUpdateCar={
   type: "UPDATE_CAR";

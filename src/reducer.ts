@@ -14,7 +14,12 @@ export const reducer = (state: State, action: ActionsAll): State => {
     case "SET_FILTER_YEAR":
       return {
         ...state,
-        selectedYear: action.payload
+        selectedYear: action.payload,
+      };
+    case "ADD_CAR":
+      return {
+        ...state,
+        cars: [...state.cars, action.payload],
       };
     default:
       return state;
