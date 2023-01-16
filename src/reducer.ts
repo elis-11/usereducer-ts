@@ -9,6 +9,14 @@ export const initialState: State = {
   filterYears: [2018, 2019, 2020],
 };
 
-export const reducer = (state: State, action: ActionsAll) => {
-  
+export const reducer = (state: State, action: ActionsAll): State => {
+  switch (action.type) {
+    case "SET_FILTER_YEAR":
+      return {
+        ...state,
+        selectedYear: action.payload
+      };
+    default:
+      return state;
+  }
 };
