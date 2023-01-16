@@ -1,6 +1,6 @@
 export type Car = {
   id: string;
   name: string;
-  year: number | null | undefined;
+  year: number;
   url: string;
 };

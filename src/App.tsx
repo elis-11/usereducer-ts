@@ -13,7 +13,7 @@ function App() {
   const [newCar, setNewCar] = useState<Car>({
     id: Date.now().toString(),
     name: "",
-    year: null,
+    year: 2020,
     url: "https://i.pravatar.cc",
   });
 
@@ -33,7 +33,7 @@ function App() {
     setNewCar({
       id: Date.now().toString(),
       name: "",
-      year: null,
+      year: 2020,
       url: "https://i.pravatar.cc",
     })
   };
@@ -53,6 +53,12 @@ function App() {
           name="name"
           value={newCar.name}
           onChange={(e) => setNewCar({ ...newCar, name: e.target.value })}
+        />
+        <input
+          type="number"
+          name="year"
+          value={newCar.year}
+          onChange={(e) => setNewCar({ ...newCar, year: Number(e.target.value) })}
         />
         <button type="submit">+</button>
       </form>
