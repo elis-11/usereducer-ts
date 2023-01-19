@@ -44,6 +44,7 @@ function App() {
 
   return (
     <div className="Cars"> 
+    <h2>UseReducer - TypeScript</h2>
       <div className="selcted">
         {filteredYears.map((year) => (
           <div key={year} onClick={() => handleSelectedYear(year)}>
