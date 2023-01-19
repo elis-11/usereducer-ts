@@ -11,7 +11,7 @@ export type ActionUpdateCar={
 }
 export type ActionDeleteCar = {
   type: "DELETE_CAR";
-  payload: string;
+  payload: string
 };
 export type ActionSetFilterYear = {
   type: "SET_FILTER_YEAR";

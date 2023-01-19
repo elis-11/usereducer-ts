@@ -21,10 +21,17 @@ export const reducer = (state: State, action: ActionsAll): State => {
         ...state,
         cars: [...state.cars, action.payload],
       };
+    case "UPDATE_CAR":
+      return {
+        ...state,
+        cars: state.cars.map((car) =>
+          car.id !== action.payload.id ? car : action.payload
+        ),
+      };
     case "DELETE_CAR":
       return {
         ...state,
-        cars: [...state.cars.filter((car) => car.id !== action.payload)],
+        cars: state.cars.filter((car) => car.id !== action.payload),
       };
     default:
       return state;
