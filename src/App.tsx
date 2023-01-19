@@ -7,9 +7,7 @@ import { Car } from "./types/car";
 function App() {
   // const [cars, setCars] = useState(carsJson as [Car]);
   const [state, dispatch] = useReducer(reducer, initialState);
-  const cars = state.cars;
-  const filterYears = state.filterYears;
-  const selectedYear = state.selectedYear;
+  const {cars, selectedYear, filteredYears} = state
   const [newCar, setNewCar] = useState<Car>({
     id: Date.now().toString(),
     name: "",
@@ -25,24 +23,31 @@ function App() {
 
   if (selectedYear) {
     filteredCars = cars.filter((car) => car.year === selectedYear);
+    console.log("filteredCars");   
   }
-
+  console.log("filteredCars2", filteredCars);
+  
   const handleNewCarSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    dispatch({type: "ADD_CAR", payload: newCar})
+    dispatch({ type: "ADD_CAR", payload: newCar });
     setNewCar({
       id: Date.now().toString(),
       name: "",
       year: 2020,
       url: "https://i.pravatar.cc",
-    })
+    });
   };
+
+  const handleDeleteCar = (carId: string) => {
+    dispatch({type: "DELETE_CAR", payload: carId})
+  }
+
   return (
-    <div className="Cars">
+    <div className="Cars"> 
       <div className="selcted">
-        {filterYears.map((filterYear) => (
-          <div key={filterYear} onClick={() => handleSelectedYear(filterYear)}>
-            {filterYear}
+        {filteredYears.map((year) => (
+          <div key={year} onClick={() => handleSelectedYear(year)}>
+            {year}
           </div>
         ))}
       </div>
@@ -58,7 +63,9 @@ function App() {
           type="number"
           name="year"
           value={newCar.year}
-          onChange={(e) => setNewCar({ ...newCar, year: Number(e.target.value) })}
+          onChange={(e) =>
+            setNewCar({ ...newCar, year: Number(e.target.value) })
+          }
         />
         <button type="submit">+</button>
       </form>
@@ -69,6 +76,8 @@ function App() {
             <div className="name">{car.name}</div>
             <div className="name">{car.year}</div>
             <img className="image" src={car.url} alt="" />
+            <button onClick={()=>handleDeleteCar(car.id)}>remove</button>
+            {/* <button onClick={()=>dispatch({type: "DELETE_CAR", id: car.id})}>remove</button> */}
           </div>
         ))}
       </div>

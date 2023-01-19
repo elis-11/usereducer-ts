@@ -6,7 +6,7 @@ import { Car } from "./types/car";
 export const initialState: State = {
   cars: carsJson as Car[],
   selectedYear: undefined,
-  filterYears: [2018, 2019, 2020],
+  filteredYears: [2018, 2019, 2020],
 };
 
 export const reducer = (state: State, action: ActionsAll): State => {
@@ -20,6 +20,11 @@ export const reducer = (state: State, action: ActionsAll): State => {
       return {
         ...state,
         cars: [...state.cars, action.payload],
+      };
+    case "DELETE_CAR":
+      return {
+        ...state,
+        cars: [...state.cars.filter((car) => car.id !== action.payload)],
       };
     default:
       return state;

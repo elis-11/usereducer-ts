@@ -1,13 +1,13 @@
 import { Car } from "./car";
 
 // individual actions
-export type ActionSetAddCar={
+export type ActionAddCar={
   type: "ADD_CAR";
   payload: Car
 }
-export type ActionSetUpdateCar={
+export type ActionUpdateCar={
   type: "UPDATE_CAR";
-  payload: string;
+  payload: Car
 }
 export type ActionDeleteCar = {
   type: "DELETE_CAR";
@@ -19,4 +19,4 @@ export type ActionSetFilterYear = {
 };
 
 // union actions
-export type ActionsAll = ActionDeleteCar | ActionSetFilterYear | ActionSetUpdateCar | ActionSetAddCar;
+export type ActionsAll = ActionDeleteCar | ActionSetFilterYear | ActionUpdateCar | ActionAddCar;
