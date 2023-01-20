@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ActionsAll } from "./types/action";
 import { Car } from "./types/car";
+import { BsTrash } from "react-icons/bs";
+import { RxUpdate } from "react-icons/rx";
 
 export const CarCard = ({
   dispatch,
@@ -29,11 +31,17 @@ export const CarCard = ({
         <div className="name">{car.name}</div>
         {/* <div className="name">{car.year}</div> */}
         <div className="name">
-          <input type="number" value={editCar.year} onChange={handleYearChange} />
+          <input
+            type="number"
+            value={editCar.year}
+            onChange={handleYearChange}
+          />
         </div>
         <img className="image" src={car.url} alt="" />
-        <button onClick={() => handleDeleteCar(car.id)}>remove</button>
-        <button onClick={() => handleUpdateCar(car.id)}>update</button>
+        <div className="actions">
+          <RxUpdate className="icon"  onClick={() => handleUpdateCar(car.id)} />
+          <BsTrash  className="icon" onClick={() => handleDeleteCar(car.id)} />
+        </div>
         {/* <button onClick={()=>dispatch({type: "DELETE_CAR", payload: car.id})}>remove</button> */}
       </div>
     </div>
