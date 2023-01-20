@@ -1,6 +1,5 @@
 import { useReducer, useState } from "react";
 import "./App.scss";
-import carsJson from "./assets/cars.json";
 import { CarCard } from "./CarCard";
 import { initialState, reducer } from "./reducer";
 import { Car } from "./types/car";
@@ -42,9 +41,9 @@ function App() {
   return (
     <div className="Cars">
       <h2>UseReducer - TypeScript</h2>
-      <div className="selcted">
+      <div className="year">
         {filteredYears.map((year) => (
-          <div className="years" key={year} onClick={() => handleSelectedYear(year)}>
+          <div className={selectedYear === year ? 'active' : 'filter'} key={year} onClick={() => handleSelectedYear(year)}>
             {year}
           </div>
         ))}
