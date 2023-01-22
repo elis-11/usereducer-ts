@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ActionsAll } from "./types/action";
 import { Car } from "./types/car";
 import { BsTrash } from "react-icons/bs";
