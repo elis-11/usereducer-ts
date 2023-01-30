@@ -13,7 +13,8 @@ export const CarCard = ({
 }) => {
   const [editCar, setEditCar] = useState<Car>(car);
 
-  const handleUpdateCar = (carId: string) => {
+  // const handleUpdateCar = (carId: string) => {
+  const handleUpdateCar = () => {
     dispatch({ type: "UPDATE_CAR", payload: editCar });
   };
 
@@ -39,7 +40,7 @@ export const CarCard = ({
         </div>
         <img className="image" src={car.url} alt="" />
         <div className="actions">
-          <RxUpdate className="icon"  onClick={() => handleUpdateCar(car.id)} />
+          <RxUpdate className="icon"  onClick={() => handleUpdateCar()} />
           <BsTrash  className="icon" onClick={() => handleDeleteCar(car.id)} />
         </div>
         {/* <button onClick={()=>dispatch({type: "DELETE_CAR", payload: car.id})}>remove</button> */}
