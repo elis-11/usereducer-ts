@@ -34,7 +34,7 @@ export const CarCard = ({
         <div className="name">
           <input
             type="number"
-            value={editCar.year}
+            value={editCar.year}      
             onChange={handleYearChange}
           />
         </div>

@@ -43,7 +43,11 @@ function App() {
       <h2>UseReducer - TypeScript</h2>
       <div className="year">
         {filteredYears.map((year) => (
-          <div className={selectedYear === year ? 'active' : 'filter'} key={year} onClick={() => handleSelectedYear(year)}>
+          <div
+            className={selectedYear === year ? "active" : "filter"}
+            key={year}
+            onClick={() => handleSelectedYear(year)}
+          >
             {year}
           </div>
         ))}
@@ -69,7 +73,7 @@ function App() {
 
       <div className="cars">
         {filteredCars.map((car) => (
-          <CarCard key={car.id} dispatch={dispatch} car={car}/>
+          <CarCard key={car.id} dispatch={dispatch} car={car} />
         ))}
       </div>
     </div>
